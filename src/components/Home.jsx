@@ -1,9 +1,11 @@
 import fanbooks from '../products/fanta.json'
 import { Component,  } from 'react'
-import {Container, Row, Button, Card} from 'react-bootstrap'
+import {Container, Row, Button, Card, Col} from 'react-bootstrap'
+import CommentForm from './CommentForm'
 
 class Home extends Component {
     state = {
+        selected: null
 
     }
 
@@ -17,24 +19,29 @@ class Home extends Component {
                
                    { fanbooks.slice(0,9).map(book => (
                      
-                          <Card style={{ width: '18rem' }} className='card col-12 col-md-3 bg-dark text-white  mt-2 m-2' key={book.asin}>
+                          <Card style={{ width: '18rem' }} className='card col-12 col-md-3 bg-dark text-white  mt-2 m-2' key={book.asin}
+                          onClick={() => this.setState({selected: book})}>
                           <Card.Img variant="top" className=" img-fluid" src={book.img} alt="First slide"/>
                           <Card.Body>
                             <Card.Title>{book.title}</Card.Title>
                             <Card.Text>
                             {book.price} $
                             </Card.Text>
-                            <Button variant="primary" className='mt-auto'>Go somewhere</Button>
+                            <Button variant="primary" className='mt-auto'>Comment it!</Button>
                           </Card.Body>
                         </Card>
-                       
-                     
+                                           
                    ))
                     
 
                    }    
                 
             {/* </Col> */}
+        </Row>
+        <Row className='justify-content-center'>
+            <Col>
+            <CommentForm />
+            </Col>
         </Row>
    
 
