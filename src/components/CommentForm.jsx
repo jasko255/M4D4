@@ -8,6 +8,15 @@ import {Form, Button} from 'react-bootstrap'
 
 class CommentForm extends Component {
 
+    state = {
+        newComment: {
+            comment: '',
+            rate: 1,
+           elementId:''
+        },
+    }
+
+
     render(){
         
         return <>
