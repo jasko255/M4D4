@@ -22,22 +22,29 @@ class CommentForm extends Component {
         return <>
         <h1 className='text-center'>Leave a comment</h1>
         <Form className='text-center'>    
-  <Form.Group >
-    
-    <Form.Control as="textarea" rows={3} />
+  <Form.Group >    
+    <Form.Control as="textarea" rows={3} 
+    onChange={(e)=>this.setState({ 
+        newComment: {
+        ...this.state.newComment,
+        comment: e.target.value
+    }
+    })} value={this.state.newComment.comment}/>
   </Form.Group>
-  {['radio'].map((type) => (
-    <div key={`inline-${type}`} className="mb-3">
-      <Form.Check inline label="1" name="group1" type={type} id={`inline-${type}-1`} />
-      <Form.Check inline label="2" name="group1" type={type} id={`inline-${type}-2`} />
-      <Form.Check inline label="3" name="group1" type={type} id={`inline-${type}-3`} />
-      <Form.Check inline label="4" name="group1" type={type} id={`inline-${type}-4`} />
-      <Form.Check inline label="5" name="group1" type={type} id={`inline-${type}-5`} />
+  <Form.Group controlId="exampleForm.ControlSelect2">
+    <Form.Label>give it a value</Form.Label>
+    <Form.Control as="select" value={this.state.newComment.rate}>
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </Form.Control>
+  </Form.Group>
       <Button variant="primary" type="submit">
     Submit
   </Button>
-    </div>
-  ))}
+ 
 </Form>
 
 </>
